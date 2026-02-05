@@ -1,4 +1,3 @@
-const UserProfile = require('../schemas/UserProfile');
 const { ApplicationCommandOptionType } = require('discord.js');
 const fs = require("fs")
 
@@ -6,7 +5,10 @@ const readFileLines = filename =>
   fs
     .readFileSync(filename)
     .toString('UTF8')
-    .split('\n');
+    .replace(/^\uFEFF/, '')
+    .split(/\r?\n/)
+    .map(line => line.trim())
+    .filter(line => line.length > 0);
 
 
 module.exports = {
@@ -139,8 +141,8 @@ module.exports = {
         var biome = interaction.options.getString('biome');
         var amount = interaction.options.getNumber('amount');
 
-        let mons = readFileLines('biomes/' + biome + '.txt');
-        let natures = readFileLines('natures.txt');
+        let mons = readFileLines('../biomes/' + biome + '.txt');
+        let natures = readFileLines('../natures.txt');
         
         var output = 'You found the following Pokémon:\n';
 
