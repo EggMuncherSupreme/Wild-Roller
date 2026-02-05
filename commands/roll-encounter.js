@@ -13,8 +13,8 @@ const readFileLines = filename =>
 
 module.exports = {
     data: {
-        name: 'set-losses',
-        description: `Manually sets a user's losses.`,
+        name: 'roll-encounter',
+        description: `Rolls an encounter in a given biome.`,
         options: [
             {
                 name: 'biome',
@@ -141,8 +141,8 @@ module.exports = {
         var biome = interaction.options.getString('biome');
         var amount = interaction.options.getNumber('amount');
 
-        let mons = readFileLines('../biomes/' + biome + '.txt');
-        let natures = readFileLines('../natures.txt');
+        let mons = readFileLines('./biomes/' + biome + '.txt');
+        let natures = readFileLines('./natures.txt');
         
         var output = 'You found the following Pokémon:\n';
 
