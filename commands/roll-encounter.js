@@ -13,8 +13,8 @@ const readFileLines = filename =>
 
 module.exports = {
     data: {
-        name: 'roll-encounter',
-        description: `Rolls an encounter in a given biome.`,
+        name: 'roll-encounters',
+        description: `Rolls a number of encounters in a given biome.`,
         options: [
             {
                 name: 'biome',
